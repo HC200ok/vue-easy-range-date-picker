@@ -91,14 +91,16 @@
         }
       },
       dayColor() {
-        if (this.item.today) {
-          return this.colorToday
-        } else if (this.selected) {
+        if (this.selected) {
           return "#fff"
-        } else if (this.item.valid){
+        } else if (this.active) {
           return "#222"
-        } else {
+        } else if (this.item.today) {
+          return this.colorToday
+        } else if (!this.item.valid) {
           return "#999"
+        } else {
+          return "#222"
         }
       },
       circleBackgroundColor() {

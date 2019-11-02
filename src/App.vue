@@ -12,13 +12,16 @@
       </transition>
       <input
         class="range-date-input"
-        @click="showPicker"/>
+        @click="showPicker"
+        placeholder="click to use vue-range-datepicker"
+        :value="rangeDates"/>
     </div>
   </div>
 </template>
 
 <script>
 import VueRangeDatePicker from './range-datepicker/Picker'
+import { parseTime } from './util.js'
 
 export default {
   name: 'app',
@@ -30,11 +33,21 @@ export default {
     }
   },
   methods: {
+    parseTime,
     closePicker() {
       this.show = false
     },
     showPicker() {
       this.show = true
+    }
+  },
+  computed: {
+    rangeDates() {
+      if (Object.keys(this.dates).length === 2) {
+        return `${this.parseTime(this.dates.start, 'y-m-d')}  -  ${this.parseTime(this.dates.end, 'y-m-d')}`
+      } else {
+        return ""
+      }
     }
   },
   components: {
@@ -50,8 +63,12 @@ export default {
   position: relative;
   .range-date-picker {
     position: absolute;
-    top: 36px;
+    top: 50px;
     left: 0px;
+  }
+  .range-date-input {
+    padding: 10px;
+    width: 300px;
   }
 }
 .panelIn-enter {
