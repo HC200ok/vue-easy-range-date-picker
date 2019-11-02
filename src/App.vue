@@ -5,15 +5,14 @@
       <transition name="panelIn">
         <vue-range-date-picker
           class="range-date-picker"
-          lang="jp"
+          language="jp"
           v-model="dates"
           v-show="show"
           @closePicker="closePicker"></vue-range-date-picker>
       </transition>
       <input
         class="range-date-input"
-        @click="show = !show"
-        />
+        @click="showPicker"/>
     </div>
   </div>
 </template>
@@ -25,7 +24,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'vue range datepicker',
+      msg: 'vue-range-datepicker',
       show: false,
       dates: {}
     }
@@ -33,6 +32,9 @@ export default {
   methods: {
     closePicker() {
       this.show = false
+    },
+    showPicker() {
+      this.show = true
     }
   },
   components: {
@@ -49,7 +51,7 @@ export default {
   .range-date-picker {
     position: absolute;
     top: 36px;
-    right: -100px;
+    left: 0px;
   }
 }
 .panelIn-enter {

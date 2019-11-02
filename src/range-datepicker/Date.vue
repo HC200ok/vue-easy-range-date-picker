@@ -15,7 +15,10 @@
               <div class="icon prev"></div>
           </div>
         </div>
-        <div class="text">
+        <div class="text" v-if="language === 'en'">
+          {{monthsInEnglish[month]}} {{year}}
+        </div>
+        <div class="text" v-else>
           {{year}}年{{month + 1}}月
         </div>
         <div class="side">
@@ -35,7 +38,7 @@
       <div class="weeks">
         <span
           class="week"
-          v-for="(item, i) in weeks[lang]"
+          v-for="(item, i) in weeks[language]"
           :key="i">
             {{item}}
         </span>
@@ -48,7 +51,10 @@
           :item="item"
           :canHover="canHover"
           :certainDays="certainDays"
-          :hoverDay="hoverDay"></day>
+          :hoverDay="hoverDay"
+          :colorToday="colorToday"
+          :colorSelected="colorSelected"
+          :colorActive="colorActive"></day>
       </div>
     </div>
   </div>
@@ -90,8 +96,17 @@
         type: Boolean,
         default: false
       },
-      lang: {
-        default: "zh"
+      language: {
+        type: String
+      },
+      colorToday: {
+        type: String,
+      },
+      colorSelected: {
+        type: String,
+      },
+      colorActive: {
+        type: String,
       }
     },
     data: () => ({
@@ -100,7 +115,8 @@
         'zh': ["日", "一", "二", "三", "四", "五", "六"],
         'jp': ["日", "月", "火", "水", "木", "金", "土"],
         'en': ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-      }
+      },
+      monthsInEnglish: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     }),
     components: {
       day
@@ -118,7 +134,7 @@
           && date.getDate() === today.getDate()
       },
       getDayCountOfMonth(year, month) {
-        if (month === 3 || month === 5 || month === 8 || month === 10) {
+        if ([3, 5, 8, 10].includes(month)) {
           return 30
         }
         if (month === 1) {

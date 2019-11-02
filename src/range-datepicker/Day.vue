@@ -1,10 +1,11 @@
 <template>
   <div class="day"
-    :class="{'invalid': !item.valid, 'today': item.today, 'active': active, 'locked': locked, 'end': end, 'start': start}"
+    :class="{'invalid': !item.valid, 'today': item.today, 'selected': selected, 'active': active, 'end': end, 'start': start}"
     @click="toggleDay"
-    @mouseover="changeHoverDay">
-      <div class="wrapper">
-        <div class="circle">
+    @mouseover="changeHoverDay"
+    :style="{color: dayColor, backgroundColor: dayBackgroundColor}">
+      <div class="wrapper" :style="wrapperStyleObject">
+        <div class="circle" :style="{backgroundColor: circleBackgroundColor}">
           {{item.day}}
         </div>
       </div>
@@ -12,7 +13,31 @@
 </template>
 <script>
   export default {
-    props: ['item', 'canHover', 'hoverDay', 'certainDays'],
+    props: {
+      item: {
+        type: Object,
+        default: null,
+      },
+      canHover: {
+        type: Boolean,
+        default: false
+      },
+      hoverDay: {
+        type: Number
+      },
+      certainDays: {
+        type: Array
+      },
+      colorToday: {
+        type: String
+      },
+      colorSelected: {
+        type: String
+      },
+      colorActive: {
+        type: String
+      }
+    },
     data: () => ({
       clicked: false
     }),
@@ -20,7 +45,7 @@
       toggleDay() {
         if (this.item.valid) {
           this.clicked = !this.clicked
-          if (this.clicked || this.active || this.locked) {
+          if (this.clicked || this.selected || this.active) {
             if (this.$parent.$parent.certainDays.length === 2) {
               this.$parent.$parent.certainDays = []
               this.$parent.$parent.hoverDay = null
@@ -32,13 +57,13 @@
         }
       },
       changeHoverDay() {
-        if (this.canHover && this.item.valid && !this.active) {
+        if (this.canHover && this.item.valid && !this.selected) {
           this.$parent.$parent.hoverDay = this.item.stamp
         }
       }
     },
     computed: {
-      active() {
+      selected() {
         return (this.certainDays.indexOf(this.item.stamp) !== -1
           && this.item.valid)
           || (this.item.stamp === this.hoverDay && this.item.valid)
@@ -57,12 +82,69 @@
           return this.item.stamp === max
         }
       },
-      locked() {
+      active() {
         if (this.hoverDay && this.item.valid) {
           const certain = this.certainDays[0]
           const min = Math.min(certain, this.hoverDay)
           const max = Math.max(certain, this.hoverDay)
           return this.item.stamp <= max && this.item.stamp >= min
+        }
+      },
+      dayColor() {
+        if (this.item.today) {
+          return this.colorToday
+        } else if (this.selected) {
+          return "#fff"
+        } else if (this.item.valid){
+          return "#222"
+        } else {
+          return "#999"
+        }
+      },
+      circleBackgroundColor() {
+        return this.selected ? this.colorSelected : ""
+      },
+      wrapperBackgroundColor() {
+        return this.end || this.start ? this.colorActive : ""
+      },
+      dayBackgroundColor() {
+        return this.active && !this.selected ? this.colorActive : ""
+      },
+      wrapperBorderTopLeftRadius() {
+        if (this.selected) {
+          return this.end ? "" : "13px"
+        } else {
+          return ""
+        }
+      },
+      wrapperBorderBottomLeftRadius() {
+        if (this.selected) {
+          return this.end ? "" : "13px"
+        } else {
+          return ""
+        }
+      },
+      wrapperBorderTopRightRadius() {
+        if (this.selected) {
+          return this.start ? "" : "13px"
+        } else {
+          return ""
+        }
+      },
+      wrapperBorderBottomRightRadius() {
+        if (this.selected) {
+          return this.start ? "" : "13px"
+        } else {
+          return ""
+        }
+      },
+      wrapperStyleObject() {
+        return {
+          backgroundColor: this.wrapperBackgroundColor,
+          borderTopLeftRadius: this.wrapperBorderTopLeftRadius,
+          borderBottomLeftRadius: this.wrapperBorderBottomLeftRadius,
+          borderTopRightRadius: this.wrapperBorderTopRightRadius,
+          borderBottomRightRadius: this.wrapperBorderBottomRightRadius,
         }
       }
     }
@@ -76,7 +158,6 @@
     width: 40px;
     text-align: center;
     font-size: 12px;
-    color: #222;
     box-sizing: border-box;
     .wrapper {
       padding: 3px 0px;
@@ -90,45 +171,18 @@
       border-radius: 50%;
       cursor: pointer;
     }
-    &.invalid {
-      color: #999;
-    }
-    &.today {
-      color: #1677d9;
-    }
-    &.active {
-      color: #fff;
-      .circle {
-        background-color: #1677d9;
-      }
-    }
-    &.locked {
-      background-color: #e6f2ff;
-    }
     &.end {
-      background-color: #fff!important;
       padding-right: 6px;
-      .wrapper {
-        background-color: #e6f2ff;
-        border-top-right-radius: 13px;
-        border-bottom-right-radius: 13px;
-        .circle {
-          position: relative;
-          right: -3px;
-        }
+      .circle {
+        position: relative;
+        right: -3px;
       }
     }
     &.start {
-      background-color: #fff!important;
       padding-left: 6px;
-      .wrapper {
-        background-color: #e6f2ff;
-        border-top-left-radius: 13px;
-        border-bottom-left-radius: 13px;
-        .circle {
-          position: relative;
-          left: -3px;
-        }
+      .circle {
+        position: relative;
+        left: -3px;
       }
     }
   }

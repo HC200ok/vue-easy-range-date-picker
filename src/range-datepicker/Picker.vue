@@ -9,7 +9,10 @@
         :canHover="canHover"
         :certainDays="certainDays"
         :hoverDay="hoverDay"
-        :lang="lang"
+        :language="language"
+        :colorToday="colorToday"
+        :colorSelected="colorSelected"
+        :colorActive="colorActive"
         @prevYear="leftPrevYear"
         @nextYear="leftNextYear"
         @prevMonth="leftPrevMonth"
@@ -22,7 +25,10 @@
         :canHover="canHover"
         :certainDays="certainDays"
         :hoverDay="hoverDay"
-        :lang="lang"
+        :language="language"
+        :colorToday="colorToday"
+        :colorSelected="colorSelected"
+        :colorActive="colorActive"
         @prevYear="rightPrevYear"
         @nextYear="rightNextYear"
         @prevMonth="rightPrevMonth"
@@ -40,10 +46,27 @@
     },
     props: {
       value: {
+        type: Object,
         default: null,
       },
-      lang: {
+      language: {
+        type: String,
         default: "zh"
+      },
+      colorToday: {
+        type: String,
+        // default: "#1677d9"
+        default: "#41b883"
+      },
+      colorSelected: {
+        type: String,
+        // default: "#1677d9"
+        default: "#34495e"
+      },
+      colorActive: {
+        type: String,
+        // default: "#e6f2ff"
+        default: "#41b883"
       }
     },
     data: () => ({
