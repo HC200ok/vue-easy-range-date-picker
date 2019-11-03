@@ -7,6 +7,8 @@
 ```bash
 npm install --save vue-easy-range-date-picker
 ```
+# Demo
+[Try!](https://codesandbox.io/s/vue-template-kgm6v)
 
 # Usage
 
