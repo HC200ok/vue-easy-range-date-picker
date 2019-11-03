@@ -27,9 +27,9 @@ import RangeDatePicker from 'vue-easy-range-date-picker';
 | ---------------------| -------------| -------- | ------------|
 | v-model(1)           | String       | yes      | -           |
 | language(2)          | String       | no       | 'zh'        |
-| colorToday           | String       | no       | '#41b883'   |
-| colorSelected        | String       | no       | '#34495e'   |
-| colorActive          | String       | no       | '#41b883'   |
+| colorToday(3)        | String       | no       | '#41b883'   |
+| colorSelected(3)     | String       | no       | '#34495e'   |
+| colorActive(3)       | String       | no       | '#41b883'   |
 
 (1) v-model: Bind to an Object data to store the result of date you selected: 
 ```js 
@@ -43,6 +43,8 @@ dates:
 Since the type of the output is timestamp, you are supposed to use the `parseTime` function provided in `/src/util.js` to make the result a specified format such as '2019-11-3'
 
 (2) language: Now supporting: Chinese('zh'), Japanese('jp'), English('en')
+
+(3) See how to use: [Try!](https://codesandbox.io/s/vue-template-kgm6v)
 
 # Events
 
