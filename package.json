@@ -1,10 +1,11 @@
 {
-  "name": "vue-range-datepicker",
+  "name": "vue-easy-range-date-picker",
   "description": "a simple range datepicker developed by vue",
   "version": "1.0.0",
   "author": "HC200ok",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "main": "./dist/vueRangeDatePicker.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
@@ -12,6 +13,22 @@
   "dependencies": {
     "vue": "^2.5.11"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:HC200ok/vue-range-datepicker.git"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "vue",
+    "vue-range-datapicker",
+    "javascript",
+    "vue-component",
+    "datapicker"
+  ],
+  "homepage": "https://github.com/HC200ok/vue-range-datepicker",
   "browserslist": [
     "> 1%",
     "last 2 versions",
