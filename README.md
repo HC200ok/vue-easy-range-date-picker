@@ -31,13 +31,13 @@ import RangeDatePicker from 'vue-easy-range-date-picker';
 | colorSelected(3)     | String       | no       | '#34495e'   |
 | colorActive(3)       | String       | no       | '#41b883'   |
 
-(1) v-model: Bind to an Object data to store the result of date you selected: 
+(1) v-model: Bind to an Object data to store the result of dates you selected: 
 ```js 
-// example:
+
 dates: 
 { 
-    start: 1573052400000, 
-    end: 1574434800000 
+    start: 1573052400000, // example
+    end: 1574434800000    // example
 }
 ```
 Since the type of the output is timestamp, you are supposed to use the `parseTime` function provided in `/src/util.js` to make the result a specified format such as '2019-11-3'
