@@ -8,6 +8,7 @@
 npm install --save vue-easy-range-date-picker
 ```
 # Demo
+<img src="demo.png"/>
 [Try!](https://codesandbox.io/s/vue-template-kgm6v)
 
 # Usage
