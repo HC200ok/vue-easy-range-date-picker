@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import VueRangeDatePicker from '../dist/vueRangeDatePicker.js'
+// import VueRangeDatePicker from '../dist/vueRangeDatePicker.js'
+import VueRangeDatePicker from './range-datepicker/Picker'
 import { parseTime } from './util.js'
 
 export default {

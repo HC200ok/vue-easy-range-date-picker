@@ -72,8 +72,8 @@
     data: () => ({
       leftYear: new Date().getFullYear(),
       leftMonth: new Date().getMonth(),
-      rightYear: new Date().getFullYear(),
-      rightMonth: new Date().getMonth() + 1,
+      rightYear: new Date().getMonth() === 11 ? new Date().getFullYear() + 1 : new Date().getFullYear(),
+      rightMonth: new Date().getMonth() === 11 ? 0 : new Date().getMonth() + 1,
       certainDays: [],
       hoverDay: null
     }),
@@ -85,18 +85,44 @@
         return this.certainDays.length === 1
       },
       canPrevMonth() {
-        return this.rightYear > this.leftYear
-          || this.rightMonth - this.leftMonth > 1
+        if (this.rightYear - this.leftYear > 1) {
+          return true
+        } else if (this.rightYear - this.leftYear === 1) {
+          return this.rightMonth - this.leftMonth > -11
+        } else if (this.rightYear === this.leftYear) {
+          return this.rightMonth - this.leftMonth > 1
+        } else {
+          return false
+        }
       },
       canPrevYear() {
-        return this.rightYear > this.leftYear
+        if (this.rightYear - this.leftYear > 1) {
+          return true
+        } else if (this.rightYear - this.leftYear === 1) {
+          return this.rightMonth > this.leftMonth
+        } else {
+          return false
+        }
       },
       canNextMonth() {
-        return this.leftYear < this.rightYear
-          || this.rightMonth - this.leftMonth > 1
+        if (this.rightYear - this.leftYear > 1) {
+          return true
+        } else if (this.rightYear - this.leftYear === 1) {
+          return this.rightMonth - this.leftMonth > -11
+        } else if (this.rightYear === this.leftYear) {
+          return this.rightMonth - this.leftMonth > 1
+        } else {
+          return false
+        }
       },
       canNextYear() {
-        return this.rightYear > this.leftYear
+        if (this.rightYear - this.leftYear > 1) {
+          return true
+        } else if (this.rightYear - this.leftYear === 1) {
+          return this.rightMonth > this.leftMonth
+        } else {
+          return false
+        }
       }
     },
     methods: {

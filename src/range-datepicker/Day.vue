@@ -173,6 +173,9 @@
       border-radius: 50%;
       cursor: pointer;
     }
+    &.today {
+      font-weight: bold;
+    }
     &.end {
       padding-right: 6px;
       .circle {
