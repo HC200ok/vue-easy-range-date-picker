@@ -62,7 +62,4 @@ npm run dev
 npm run build
 ```
 
-# License
-
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
