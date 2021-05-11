@@ -42,9 +42,9 @@ dates:
     end: 1574434800000    // example
 }
 ```
-Since the type of the output is timestamp, you are supposed to use the `parseTime` function provided in `/src/util.js` to make the result a specified format such as '2019-11-3'
+value of date is timestamp data type, you can use the `parseTime` function provided in `/src/util.js` to format the output like '2019-11-3'
 
-(2) language: Now supporting: Chinese('zh'), Japanese('jp'), English('en')
+(2) language: Now supporting Chinese('zh'), Japanese('jp'), English('en')
 
 (3) See how to use: [Try!](https://codesandbox.io/s/vue-template-kgm6v)
 
