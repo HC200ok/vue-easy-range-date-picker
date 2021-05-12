@@ -42,7 +42,7 @@ dates:
     end: 1574434800000    // example
 }
 ```
-value of date is timestamp data type, you can use the `parseTime` function provided in `/src/util.js` to format the output like '2019-11-3'
+Suggestion: using `parseTime` function provided in `/src/util.js` to modify the timestamp to specific format like '2019-11-3'
 
 (2) language: Now supporting Chinese('zh'), Japanese('jp'), English('en')
 
@@ -50,7 +50,7 @@ value of date is timestamp data type, you can use the `parseTime` function provi
 
 # Events
 
-`closePicker` event is emitted when both the start date and end date were selected.
+`closePicker` event will be emitted when both the start date and end date are selected.
 
 # Build Setup
 ``` bash
