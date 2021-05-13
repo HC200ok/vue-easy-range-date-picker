@@ -42,7 +42,7 @@ dates:
     end: 1574434800000    // example
 }
 ```
-Suggestion: using `parseTime` function provided in `/src/util.js` to modify the timestamp to specific format like '2019-11-3'
+Suggestion: using `parseTime` function provided in `/src/util.js` to convert the timestamp to specific format like '2019-11-3'
 
 (2) language: Now supporting Chinese('zh'), Japanese('jp'), English('en')
 
