@@ -27,7 +27,7 @@ import RangeDatePicker from 'vue-easy-range-date-picker';
 # Props API
 | Props                | Type         | Required | Default     |
 | ---------------------| -------------| -------- | ------------|
-| v-model(1)           | String       | yes      | -           |
+| v-model(1)           | Object       | yes      | -           |
 | language(2)          | String       | no       | 'zh'        |
 | colorToday(3)        | String       | no       | '#41b883'   |
 | colorSelected(3)     | String       | no       | '#34495e'   |
