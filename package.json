@@ -1,7 +1,7 @@
 {
   "name": "vue-easy-range-date-picker",
   "description": "a simple range datepicker developed by vue",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "author": "HC200ok",
   "license": "MIT",
   "private": false,
@@ -18,8 +18,7 @@
     "url": "git+git@github.com:HC200ok/vue-range-datepicker.git"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "keywords": [
     "vue",
