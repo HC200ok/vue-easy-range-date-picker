@@ -42,7 +42,7 @@ dates: {
   end: 1574434800000
 }
 ```
-you can also pass a empty object as the defaul value like this:
+you can also pass a empty object as the default value like this:
 ```html
 <range-date-picker v-model="{}"/>
 ```
