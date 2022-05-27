@@ -1,6 +1,6 @@
 # vue-easy-range-date-picker
 
-> A simple range datepicker based on Vue2
+> A simple and easy-to-use range datepicker based on Vue2
 
 # Installation
 
