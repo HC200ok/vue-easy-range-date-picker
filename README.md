@@ -8,9 +8,10 @@
 npm install --save vue-easy-range-date-picker
 ```
 # Demo
-<img src="demo.png" width="650px"/>
+<img src="./images/demo.png" width="650px"/>
 
-[Try!](https://codesandbox.io/s/vue-template-kgm6v?file=/src/App.vue)
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-template-kgm6v?file=/src/App.vue)
+
 
 # Usage
 
@@ -27,26 +28,29 @@ import RangeDatePicker from 'vue-easy-range-date-picker';
 # Props API
 | Props                | Type         | Required | Default     |
 | ---------------------| -------------| -------- | ------------|
-| v-model(1)           | Object       | yes      | -           |
+| v-model(1)           | Object       | yes      | null        |
 | language(2)          | String       | no       | 'zh'        |
 | colorToday(3)        | String       | no       | '#41b883'   |
 | colorSelected(3)     | String       | no       | '#34495e'   |
 | colorActive(3)       | String       | no       | '#41b883'   |
 
-(1) v-model: Bind to an Object data to store the result of dates you selected: 
-```js 
-
-dates: 
-{ 
-    start: 1573052400000, // example
-    end: 1574434800000    // example
+(1) v-model: Bind to an Object which contains start timestamp and end timestamp: 
+```json
+// example
+dates: { 
+  start: 1573052400000,
+  end: 1574434800000
 }
 ```
-Suggestion: using `parseTime` function provided in `/src/util.js` to convert the timestamp to specific format like '2019-11-3'
+you can also pass a empty object as the defaul value like this:
+```html
+<range-date-picker v-model="{}"/>
+```
+(2) Now supporting Chinese('zh'), Japanese('jp'), English('en')
 
-(2) language: Now supporting Chinese('zh'), Japanese('jp'), English('en')
+(3)
 
-(3) See how to use: [Try!](https://codesandbox.io/s/vue-template-kgm6v)
+<img src="./images/color.png" width="650px"/>
 
 # Events
 

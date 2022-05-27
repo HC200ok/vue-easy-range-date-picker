@@ -55,17 +55,14 @@
       },
       colorToday: {
         type: String,
-        // default: "#1677d9"
         default: "#41b883"
       },
       colorSelected: {
         type: String,
-        // default: "#1677d9"
         default: "#34495e"
       },
       colorActive: {
         type: String,
-        // default: "#e6f2ff"
         default: "#41b883"
       }
     },
