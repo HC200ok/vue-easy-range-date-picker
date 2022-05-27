@@ -35,7 +35,7 @@ import RangeDatePicker from 'vue-easy-range-date-picker';
 | colorActive(3)       | String       | no       | '#41b883'   |
 
 (1) v-model: Bind to an Object which contains start timestamp and end timestamp: 
-```json
+```js
 // example
 dates: { 
   start: 1573052400000,
