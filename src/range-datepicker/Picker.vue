@@ -66,14 +66,16 @@
         default: "#41b883"
       }
     },
-    data: () => ({
-      leftYear: new Date().getFullYear(),
-      leftMonth: new Date().getMonth(),
-      rightYear: new Date().getMonth() === 11 ? new Date().getFullYear() + 1 : new Date().getFullYear(),
-      rightMonth: new Date().getMonth() === 11 ? 0 : new Date().getMonth() + 1,
-      certainDays: [],
-      hoverDay: null
-    }),
+    data() {
+      return {
+        leftYear: this.initLeftYear(),
+        leftMonth: this.initLeftMonth(),
+        rightYear: this.initRightYear(),
+        rightMonth: this.initRightMonth(),
+        certainDays: this.initCertainDays(),
+        hoverDay: this.initHoverDay(),
+      }
+    },
     computed: {
       selected() {
         return this.certainDays.length === 2
@@ -123,6 +125,65 @@
       }
     },
     methods: {
+      initLeftYear() {
+        if (this.value.start) {
+          return new Date(this.value.start).getFullYear()
+        }
+        return new Date().getFullYear()
+      },
+      initLeftMonth() {
+        if (this.value.start) {
+          return new Date(this.value.start).getMonth()
+        }
+        return new Date().getMonth()
+      },
+      initRightYear() {
+        if (this.value.start && this.value.end) {
+          if (this.isSameYearMonth()) {
+            const leftDate = new Date(this.value.start)
+            return leftDate.getMonth() === 11 ? leftDate.getFullYear() + 1 : leftDate.getFullYear()
+          }
+          return new Date(this.value.end).getFullYear()
+        }
+        return new Date().getMonth() === 11 ? new Date().getFullYear() + 1 : new Date().getFullYear()
+      },
+      initRightMonth() {
+        if (this.value.start && this.value.end) {
+          if (this.isSameYearMonth()) {
+            const leftDate = new Date(this.value.start)
+            return leftDate.getMonth() === 11 ? 0 : leftDate.getMonth() + 1
+          }
+          return new Date(this.value.end).getMonth()
+        }
+        return new Date().getMonth() === 11 ? 0 : new Date().getMonth() + 1
+      },
+      isSameYearMonth() {
+        const leftYear = new Date(this.value.start).getFullYear()
+        const leftMonth = new Date(this.value.start).getMonth()
+        const rightYear = new Date(this.value.end).getFullYear()
+        const rightMonth = new Date(this.value.end).getMonth()
+
+        return leftYear === rightYear && leftMonth === rightMonth
+      },
+      initCertainDays() {
+        const certainDays = []
+        const { start, end } = this.value
+        if (start) certainDays.push(this.formatDayToMidnight(start))
+        if (end) certainDays.push(this.formatDayToMidnight(end))
+        return certainDays
+      },
+      formatDayToMidnight(day) {
+        const date = new Date(day)
+        date.setHours(0)
+        date.setMinutes(0)
+        date.setSeconds(0)
+        date.setMilliseconds(0)
+        return Date.parse(date)
+      },
+      initHoverDay() {
+        if (this.value.start && this.value.end && (this.value.start < this.value.end)) return this.formatDayToMidnight(this.value.end)
+        return null
+      },
       leftNextYear() {
         this.leftYear += 1
       },
