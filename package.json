@@ -1,7 +1,7 @@
 {
   "name": "vue-easy-range-date-picker",
   "description": "a simple range datepicker developed by vue",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "HC200ok",
   "license": "MIT",
   "private": false,
@@ -11,7 +11,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.5.11"
+    "node-sass": "^7.0.1",
+    "vue": "^2.6.14"
   },
   "repository": {
     "type": "git",
@@ -43,7 +44,7 @@
     "file-loader": "^1.1.4",
     "sass-loader": "^6.0.6",
     "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4",
+    "vue-template-compiler": "^2.6.14",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
   }
